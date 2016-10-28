@@ -1,9 +1,16 @@
 package controller;
 
+import dao.tokenDAO;
+import dao.userDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -18,6 +25,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import constants.constant;
 
 /**
  * Servlet implementation class mailsend
@@ -102,6 +111,8 @@ public class mailsend extends HttpServlet {
 		
 		String message = "";
 		
+		Connection conn = null;
+		
 		// メールの送信
 		try {
 			
@@ -110,19 +121,33 @@ public class mailsend extends HttpServlet {
 		    StringBuffer tknbuf = new StringBuffer();
 		    SecureRandom random = null;
 		    
-		    try {
-		      random = SecureRandom.getInstance("SHA1PRNG");
-		      random.nextBytes(token);
-		 
-		      for (int i = 0; i < token.length; i++) {
-		    	  tknbuf.append(String.format("%02x", token[i]));
-		      }
-		 
-		    } catch (NoSuchAlgorithmException e) {
-		      e.printStackTrace();
+		    random = SecureRandom.getInstance("SHA1PRNG");
+		    random.nextBytes(token);
+
+		    for (int i = 0; i < token.length; i++) {
+		    	tknbuf.append(String.format("%02x", token[i]));
 		    }
+			  
+		    tokenDAO tokendao = new tokenDAO();
 			
-		    //本文作成
+			
+
+			String url = constant.url;
+		    String user = constant.user;
+		    String password = constant.password;
+		     
+ 
+	    	Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    	conn = DriverManager.getConnection(url, user, password);
+
+	        // 自動コミット・モードを設定
+	        conn.setAutoCommit(false);
+	        
+		    int ret = 0;
+			ret = tokendao.tokenInsert(conn, mailadress, tknbuf.toString());
+    	   	    
+	        
+			 //本文作成
 			message = "http://localhost:8080/project1/newregist?tkn=" + tknbuf.toString();
 			
 			// メール関係プロパティの作成
@@ -161,10 +186,24 @@ public class mailsend extends HttpServlet {
 					request.getRequestDispatcher("/jsp/sentcompleted.jsp");
 			dispatchar.forward(request, response);
 			
+	    	conn.commit();		    	 
+		      
+	    }catch (ClassNotFoundException e){
 
-		} catch (Exception e) {
-			// 送信エラー	
-		}
+	    }catch (SQLException e){
+
+	    }catch (Exception e){
+
+      	}finally{
+	        try{
+				if (conn != null){
+					conn.rollback();
+					conn.close();
+				}
+	        }catch (SQLException e){
+		          
+	        }
+      	}
 	}
-
 }
+

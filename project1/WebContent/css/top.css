@@ -1,0 +1,11 @@
+#form{
+  width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #555;
+}
+  
+.title{
+  text-align: left;
+  font-size: 30px;
+}

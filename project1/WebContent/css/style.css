@@ -101,7 +101,7 @@ ul.menu {
     display:table;
     table-layout:fixed;
     width:720px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 ul.menu li {
     display:table-cell;

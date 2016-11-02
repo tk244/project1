@@ -36,7 +36,7 @@ public class logout extends HttpServlet {
 	    HttpSession session = request.getSession(true);
 	    session.invalidate();
 
-		//ログイン画面
+		// ログイン画面
 		RequestDispatcher dispatchar =
 				request.getRequestDispatcher("/jsp/login.jsp");
 		dispatchar.forward(request, response);

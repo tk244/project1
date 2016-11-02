@@ -19,7 +19,7 @@ public class userMODEL {
 	
 	public int loginCheck() 
 	{
-		int ret = 0;
+		int ret = 0;								//リターンコード
 		String password = "";
 		
 		commonClass com = new commonClass();
@@ -46,6 +46,17 @@ public class userMODEL {
 		userDAO userdao = new userDAO();
 		
 		ret = userdao.userRegist(Userid, password, Username);
+		
+		return ret;
+	}
+	
+	public int userExist()
+	{
+		int ret = 0;								//リターンコード
+		
+		userDAO userdao = new userDAO();
+		
+		ret = userdao.userExist(Userid);
 		
 		return ret;
 	}

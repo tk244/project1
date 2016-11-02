@@ -3,9 +3,125 @@
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #555;
+  text-align: center;
 }
-  
+
+.scr {
+   overflow: scroll;   /* スクロール表示 */ 
+   width: 800px;
+   height: 350px;
+}
+
+
 .title{
   text-align: left;
   font-size: 30px;
+}
+
+table.tbl {
+	font-size: 10px;
+	border-collapse: collapse;
+	text-align: center;
+	line-height: 1.5;
+	border: 1px solid #ccc;
+}
+table.tbl thead {
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	background: #778899 ;
+}
+table.tbl thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #fff;
+	border: 1px solid #ccc;
+}
+table.tbl tbody th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+	border: 1px solid #ccc;
+}
+table.tbl td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	border: 1px solid #ccc;
+}
+
+/* 列 */
+.no{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:50px;
+    max-width:50px;
+}
+.company_id{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:70px;
+    max-width:70px;
+}
+.company_name{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.area{
+   white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:200px;
+    max-width:200px;
+}
+.business{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.characteristic{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.tmezone{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.period{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.employment{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
+}
+.salary{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100px;
+    max-width:100px;
 }

@@ -1,14 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
     
-<%
-	request.setCharacterEncoding("UTF-8");
-	String login = (String)session.getAttribute("login");
-	if (login != null && login.equals("OK")){
-	    pageContext.forward("/jsp/top.jsp");
-	}
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,23 +9,23 @@
 <title>ログイン</title>
 </head>
 <body>
-    <form action="/project1/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <div id="form">
             <p class="form-title">ログイン</p>
 			<p style="color: red">
 	         	${errorMessage}
 	     	</p>
             
-            <p>ユーザID</p>           
+            <p>メールアドレス</p>           
             <input type="text" name="userid">
             <br><br>
             <p>パスワード</p>
             <input type="password" name="pass">
             <br>
-            <div Align="right"><a class = "reisue12" href="controller/reissue.jsp">ユーザID・パスワードをお忘れですか？</a></div>
+            <div Align="right"><a class = "reisue12" href="${pageContext.request.contextPath}/jsp/reissue.jsp">ユーザID・パスワードをお忘れですか？</a></div>
             <p class="Login_submit"><input type="submit" value="ログイン"></p>
             <br>
-            <div Align="center"><a href="${pageContext.request.contextPath}/jsp/newregist.jsp">はじめてご利用の方（新規会員登録）</a></div>
+            <div Align="center"><a href="${pageContext.request.contextPath}/jsp/registmail.jsp">はじめてご利用の方（新規会員登録）</a></div>
         </div>
     </form>
 </body>

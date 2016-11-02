@@ -7,24 +7,24 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/newregist.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/newregist.js"></script>
-<title>新規登録</title>
+<title>会員登録</title>
 
 </head>
 <body>
 
 	<div id="form">
 	
-	   	<p class="form-title">新規登録</p>
+	   	<p class="form-title">会員登録</p>
 	   	<p style="color: red; text-align: center;">
 			${errorMessage}
 		</p>
 	
-	    <form name="form1" action="/project1/newregist" method="post">
+	    <form name="form1" action="${pageContext.request.contextPath}/newregist" method="post">
 
 			<table>
 	      		<tr>
-	       			<td class="col">ユーザID<span class="str">&nbsp;(必須)</span></td>
-	          		<td><input type="text" name="userid" >
+	       			<td class="col">メールアドレス<span class="str">&nbsp;(必須)</span></td>
+	          		<td><input type="text" readonly="readonly" name="userid" value=${mailadress} />
 		    			<% if(request.getAttribute("errorUserid") != null){ %>
 							<br><span class="err">${errorUserid}</span>
 						<% } %>

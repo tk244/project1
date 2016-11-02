@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="C:/Users/kikuchi/workspace2/sample0504/project1/WebContent/WEB-INF/lib/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kikuchi/Desktop/個人/ツール/apache-tomcat-7.0.69/lib/activation.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kikuchi/Desktop/個人/ツール/apache-tomcat-7.0.69/lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kikuchi/Desktop/個人/ツール/apache-tomcat-7.0.69/lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kikuchi/Desktop/個人/ツール/apache-tomcat-7.0.69/lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

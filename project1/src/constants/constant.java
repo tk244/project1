@@ -6,7 +6,7 @@ public class constant {
 	private constant(){} 
 	
 	// ’è”
-	public static final String url = "jdbc:mysql://localhost/jdbctestdb";
+	public static final String url = "jdbc:mysql://localhost/jdbctestdb?useUnicode=true&characterEncoding=utf8";
 	public static final String user = "test";
 	public static final String password = "testpass";	
 	

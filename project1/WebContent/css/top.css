@@ -47,7 +47,6 @@ table.tbl tbody th {
 	border: 1px solid #ccc;
 }
 table.tbl td {
-	width: 350px;
 	padding: 10px;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
@@ -73,8 +72,8 @@ table.tbl td {
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    width:200px;
-    max-width:200px;
+    width:250px;
+    max-width:250px;
 }
 .area{
    white-space:nowrap;

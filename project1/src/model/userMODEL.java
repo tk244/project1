@@ -17,47 +17,56 @@ public class userMODEL {
 	public String getPass() {return Pass;}
 	public String getUsername() {return Username;}
 	
-	public int loginCheck() 
+	public int loginCheck() throws Exception 
 	{
 		int ret = 0;								//リターンコード
 		String password = "";
 		
-		commonClass com = new commonClass();
-		
-		password = com.encryptStr(Pass);
-		
-		userDAO userdao = new userDAO();
-		
-		ret = userdao.loginCheck(Userid, password);
-		
+		try {
+			commonClass com = new commonClass();
+			
+			password = com.encryptStr(Pass);
+			
+			userDAO userdao = new userDAO();
+			
+			ret = userdao.loginCheck(Userid, password);
+	    }catch (Exception e){
+	    	throw new Exception(e.getMessage());
+	    }
 		return ret;
 	}
 	
 	
-	public int userRegist() 
+	public int userRegist() throws Exception 
 	{
 		int ret = 0;
 		String password = "";
 		
-		commonClass com = new commonClass();
-		
-		password = com.encryptStr(Pass);
-		
-		userDAO userdao = new userDAO();
-		
-		ret = userdao.userRegist(Userid, password, Username);
-		
+		try {
+			commonClass com = new commonClass();
+			
+			password = com.encryptStr(Pass);
+			
+			userDAO userdao = new userDAO();
+			
+			ret = userdao.userRegist(Userid, password, Username);
+	    }catch (Exception e){
+	    	throw new Exception(e.getMessage());
+	    }
 		return ret;
 	}
 	
-	public int userExist()
+	public int userExist() throws Exception
 	{
 		int ret = 0;								//リターンコード
 		
-		userDAO userdao = new userDAO();
-		
-		ret = userdao.userExist(Userid);
-		
+		try {
+			userDAO userdao = new userDAO();
+			
+			ret = userdao.userExist(Userid);
+	    }catch (Exception e){
+	    	throw new Exception(e.getMessage());
+	    }
 		return ret;
 	}
 }

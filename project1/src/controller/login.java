@@ -1,12 +1,5 @@
 package controller;
 
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import java.io.IOException;
@@ -17,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.tokenDAO;
-import model.tokenMODEL;
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+
+import constants.constant;
+
 import model.userMODEL;
 
 /**
@@ -27,7 +23,8 @@ import model.userMODEL;
 @WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final Logger logger = Logger.getLogger(login.class);
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -67,7 +64,12 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int ret = 0;
+		int ret = 0;								// リターンコード
+		
+		ServletContext context = getServletContext();
+		DOMConfigurator.configure(context.getRealPath(constant.log4j));
+
+		logger.debug("doPost Start");
 		
 		try {
 		
@@ -81,7 +83,7 @@ public class login extends HttpServlet {
 			request.setAttribute("userid", userid);
 			request.setAttribute("pass", pass);
 			
-			userMODEL usermodel = new userMODEL();		
+			userMODEL usermodel = new userMODEL();
 			usermodel.SetUserid(userid);
 			usermodel.SetPass(pass);
 			
@@ -108,7 +110,9 @@ public class login extends HttpServlet {
 			}	
 
 		}catch (Exception e){
-
+			logger.error(e.getMessage());
 		}
+		
+		logger.debug("doPost End");
 	}
 }

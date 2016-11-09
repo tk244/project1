@@ -5,7 +5,7 @@ import constants.constant;
 
 public class userDAO {
 
-	public int loginCheck(String userid, String pass) 
+	public int loginCheck(String userid, String pass) throws Exception 
 	{
 		Connection conn = null;
 		int cnt = 0;
@@ -36,23 +36,23 @@ public class userDAO {
 	    	return cnt;
 		      
 	    }catch (ClassNotFoundException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (SQLException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (Exception e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
       	}finally{
         try{
           if (conn != null){
             conn.close();
           }
         }catch (SQLException e){
-	          
+        	throw new Exception(e.getMessage());
         }
       }
 	}
 	
-	public int userRegist(String userid, String pass, String username) 
+	public int userRegist(String userid, String pass, String username) throws Exception 
 	{
 		Connection conn = null;
 		int ret = 0;
@@ -86,11 +86,11 @@ public class userDAO {
 	    	return 0;
 		      
 	    }catch (ClassNotFoundException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (SQLException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (Exception e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
       	}finally{
         try{
 			if (conn != null){
@@ -98,12 +98,12 @@ public class userDAO {
 				conn.close();
 			}
         }catch (SQLException e){
-        	return -1;
+        	throw new Exception(e.getMessage());
         }
       }
 	}
 	
-	public int userExist(String userid) 
+	public int userExist(String userid) throws Exception 
 	{
 		Connection conn = null;
 		int cnt = 0;
@@ -133,18 +133,18 @@ public class userDAO {
 	    	return cnt;
 		      
 	    }catch (ClassNotFoundException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (SQLException e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
 	    }catch (Exception e){
-	    	return -1;
+	    	throw new Exception(e.getMessage());
       	}finally{
         try{
           if (conn != null){
             conn.close();
           }
         }catch (SQLException e){
-	          
+        	throw new Exception(e.getMessage());
         }
       }
 	}

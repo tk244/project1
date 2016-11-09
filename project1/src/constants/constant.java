@@ -10,5 +10,5 @@ public class constant {
 	public static final String user = "test";
 	public static final String password = "testpass";	
 	
-	
+	public static final String log4j = "WEB-INF/log4j.xml";	
 }

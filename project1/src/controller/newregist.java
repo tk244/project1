@@ -1,19 +1,21 @@
 package controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
+
+import constants.constant;
 import dao.tokenDAO;
 import model.userMODEL;
 import model.tokenMODEL;
@@ -24,6 +26,7 @@ import model.tokenMODEL;
 @WebServlet("/newregist")
 public class newregist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(newregist.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,6 +46,11 @@ public class newregist extends HttpServlet {
 		// トークン取得
 		request.setCharacterEncoding("UTF-8");
 		String tkn = request.getParameter("tkn");
+		
+		ServletContext context = getServletContext();
+		DOMConfigurator.configure(context.getRealPath(constant.log4j));
+
+		logger.debug("doGet Start");
 		
 		try {
 			
@@ -69,8 +77,10 @@ public class newregist extends HttpServlet {
 			dispatchar.forward(request, response);
 		
 		}catch (Exception e){
-	
+			logger.error(e.getMessage());
 		}
+		
+		logger.debug("doGet End");
 	}
 
 	/**
@@ -79,6 +89,11 @@ public class newregist extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int ret = 0;								// リターンコード
+		
+		ServletContext context = getServletContext();
+		DOMConfigurator.configure(context.getRealPath(constant.log4j));
+
+		logger.debug("doPost Start");
 		
 	    try 
 	    {   
@@ -122,10 +137,9 @@ public class newregist extends HttpServlet {
 						request.getRequestDispatcher("/jsp/top.jsp");
 				dispatchar.forward(request, response);
 			}
-	    }catch (Exception e){
-
-      	}finally{
-  
-        }
+		}catch (Exception e){
+			logger.error(e.getMessage());		
+      	}	    
+	    logger.debug("doPost End");
 	}
 }

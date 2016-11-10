@@ -36,18 +36,18 @@ public class userDAO {
 	    	return cnt;
 		      
 	    }catch (ClassNotFoundException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (SQLException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
       	}finally{
         try{
           if (conn != null){
             conn.close();
           }
         }catch (SQLException e){
-        	throw new Exception(e.getMessage());
+        	throw new Exception(getClass().getName() + " " + e.getMessage());
         }
       }
 	}
@@ -86,11 +86,11 @@ public class userDAO {
 	    	return 0;
 		      
 	    }catch (ClassNotFoundException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (SQLException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
       	}finally{
         try{
 			if (conn != null){
@@ -98,7 +98,7 @@ public class userDAO {
 				conn.close();
 			}
         }catch (SQLException e){
-        	throw new Exception(e.getMessage());
+        	throw new Exception(getClass().getName() + " " + e.getMessage());
         }
       }
 	}
@@ -133,18 +133,18 @@ public class userDAO {
 	    	return cnt;
 		      
 	    }catch (ClassNotFoundException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (SQLException e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
       	}finally{
         try{
           if (conn != null){
             conn.close();
           }
         }catch (SQLException e){
-        	throw new Exception(e.getMessage());
+        	throw new Exception(getClass().getName() + " " + e.getMessage());
         }
       }
 	}

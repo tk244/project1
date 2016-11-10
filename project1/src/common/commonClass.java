@@ -48,7 +48,7 @@ public class commonClass {
 		    }
 	 
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }
 	    // 完了したハッシュ計算値を返却
 	    return buffer.toString();

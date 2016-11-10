@@ -31,7 +31,7 @@ public class userMODEL {
 			
 			ret = userdao.loginCheck(Userid, password);
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }
 		return ret;
 	}
@@ -51,7 +51,7 @@ public class userMODEL {
 			
 			ret = userdao.userRegist(Userid, password, Username);
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }
 		return ret;
 	}
@@ -65,7 +65,7 @@ public class userMODEL {
 			
 			ret = userdao.userExist(Userid);
 	    }catch (Exception e){
-	    	throw new Exception(e.getMessage());
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
 	    }
 		return ret;
 	}

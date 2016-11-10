@@ -46,8 +46,8 @@ public class logout extends HttpServlet {
 			
 			response.setContentType("text/html; charset=Shift_JIS");
 	
-		    HttpSession session = request.getSession(true);
-		    session.invalidate();
+			HttpSession session = request.getSession(true);
+			session.invalidate();
 	
 			// ƒƒOƒCƒ“‰æ–Ê
 			RequestDispatcher dispatchar =
@@ -68,5 +68,4 @@ public class logout extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

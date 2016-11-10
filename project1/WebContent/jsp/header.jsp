@@ -13,8 +13,8 @@
 		</div>
 		
 		<ul class = "menu">
-		  <li><a href="#">HOME</a></li>
-		  <li><a href="#">page1</a></li>
+		  <li><a href="${pageContext.request.contextPath}/top">TOP</a></li>
+		  <li><a href="${pageContext.request.contextPath}/companyreist">新規登録</a></li>
 		  <li><a href="#">page2</a></li>
 		  <li><a href="#">page3</a></li>
 		  <li><a href="#">page4</a></li>

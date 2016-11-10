@@ -6,10 +6,25 @@
   text-align: center;
 }
 
+ul.sub {
+    display:table;
+    table-layout:fixed;
+    width:720px;
+    padding-bottom: 5px;
+}
+ul.sub li {
+    display:table-cell;
+    vertical-align:middle;
+    border-left:1px solid white;
+}
+ul.sub li:first-child {
+    border:none;    
+}
+
 .scr {
    overflow: scroll;   /* スクロール表示 */ 
    width: 800px;
-   height: 350px;
+   height: 300px;
 }
 
 
@@ -31,7 +46,7 @@ table.tbl thead {
 	background: #778899 ;
 }
 table.tbl thead th {
-	padding: 10px;
+	padding: 5px;
 	font-weight: bold;
 	vertical-align: top;
 	color: #fff;
@@ -39,7 +54,7 @@ table.tbl thead th {
 }
 table.tbl tbody th {
 	width: 150px;
-	padding: 10px;
+	padding: 5px;
 	font-weight: bold;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
@@ -47,13 +62,21 @@ table.tbl tbody th {
 	border: 1px solid #ccc;
 }
 table.tbl td {
-	padding: 10px;
+	padding: 5px;
 	vertical-align: top;
 	border-bottom: 1px solid #ccc;
 	border: 1px solid #ccc;
 }
 
 /* 列 */
+
+.chk{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:20px;
+    max-width:20px;
+}
 .no{
     white-space:nowrap;
     overflow:hidden;
@@ -79,15 +102,15 @@ table.tbl td {
    white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    width:150px;
-    max-width:150px;
+    width:80px;
+    max-width:80px;
 }
 .business{
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    width:100px;
-    max-width:100px;
+    width:200px;
+    max-width:200px;
 }
 .characteristic{
     white-space:nowrap;
@@ -123,4 +146,9 @@ table.tbl td {
     text-overflow:ellipsis;
     width:100px;
     max-width:100px;
+}
+
+.err {
+    color: #FF0000;    
+    font-size: 16px;
 }

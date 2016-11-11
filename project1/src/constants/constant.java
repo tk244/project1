@@ -11,4 +11,6 @@ public class constant {
 	public static final String password = "testpass";	
 	
 	public static final String log4j = "WEB-INF/log4j.xml";	
+	
+	public static final String localurl = "http://localhost:8080/project1/";	
 }

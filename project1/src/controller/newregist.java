@@ -60,7 +60,12 @@ public class newregist extends HttpServlet {
 			List<tokenMODEL> tokenList = tokendao.tokenCheck(tkn);
 			
 			if ((tokenList == null) || (tokenList.size() != 1)){
+				request.setAttribute("errorMessage","有効期限が無効です。");
 				
+				// エラー画面
+				RequestDispatcher dispatchar =
+						request.getRequestDispatcher("/jsp/error.jsp");
+				dispatchar.forward(request, response);
 				return;
 			}
 			
@@ -68,7 +73,23 @@ public class newregist extends HttpServlet {
 				// 異常
 				return;
 			}
-					
+			
+			userMODEL usermodel = new userMODEL();		
+			usermodel.SetUserid(tokenList.get(0).getMailadress());
+			
+			ret = usermodel.userExist();
+			
+			if (ret > 0)
+			{
+				request.setAttribute("errorMessage","既に登録済みです。");
+				
+				//ログイン画面
+				RequestDispatcher dispatchar =
+						request.getRequestDispatcher("/jsp/error.jsp");
+				dispatchar.forward(request, response);
+				return;
+			}
+			
 			request.setAttribute("mailadress", tokenList.get(0).getMailadress());
 			
 			// 新規登録画面
@@ -134,7 +155,7 @@ public class newregist extends HttpServlet {
 				
 				// メイン画面
 				RequestDispatcher dispatchar =
-						request.getRequestDispatcher("/jsp/top.jsp");
+						request.getRequestDispatcher("/top");
 				dispatchar.forward(request, response);
 			}
 		}catch (Exception e){

@@ -21,10 +21,10 @@
 			<p>パスワード</p>
 			<input type="password" name="pass">
 			<br>
-			<div Align="right"><a class = "reisue12" href="${pageContext.request.contextPath}/jsp/reissue.jsp">ユーザID・パスワードをお忘れですか？</a></div>
+			<div Align="right"><a class = "reisue12" href="${pageContext.request.contextPath}/jsp/reissuemail.jsp">ユーザID・パスワードをお忘れですか？</a></div>
 			<p class="Login_submit"><input type="submit" value="ログイン"></p>
 			<br>
-			<div Align="center"><a href="${pageContext.request.contextPath}/mailsend">はじめてご利用の方（新規会員登録）</a></div>
+			<div Align="center"><a href="${pageContext.request.contextPath}/jsp/registmail.jsp">はじめてご利用の方（新規会員登録）</a></div>
 		</form>
 	</div>
 </body>

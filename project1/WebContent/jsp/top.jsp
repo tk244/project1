@@ -15,10 +15,54 @@
 	<div id="form">
 		<form name=MyForm action="${pageContext.request.contextPath}/companylist" method="post"> 
 			<jsp:include page="/jsp/header.jsp"></jsp:include>
-			<ul class = "sub">
-				<li></li>
+
+			<table class="tbl">
+				<tr>
+					<td>地域</td>
+					<td style="text-align:left;">
+						<select name="area">
+							<c:forEach var="item" items="${areaList}" >	
+	   							<option value="${item.area_id}">${item.area_name}</option>  
+							</c:forEach>
+						</select>
+					</td>
+					<td>業種</td>
+					<td style="text-align:left;">
+						<select name="business">
+							<c:forEach var="item" items="${businessList}" >
+								<option value="${item.business_id}">${item.business_name}</option>  
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<table class="tbl">
+				<tr>
+					<td>特徴</td>
+					<td style="text-align:left;">
+						<c:forEach var="item" items="${characteristicList}" >
+							<input type="checkbox" name="characteristics" value="${item.characteristic_id}" >${item.characteristic_name}
+						</c:forEach>
+					</td>
+				</tr>
+				<tr>
+					<td>時間帯</td>
+					<td style="text-align:left;">
+						<c:forEach var="item" items="${timezoneList}" >
+							<input type="checkbox" name="timezones" value="${item.timezone_id}" >${item.timezone_name}						  
+						</c:forEach>
+					</td>
+				</tr>
+			</table>
+			
+			
+			<ul class = "sub" style="text-align:center;">
+				<li><span class="submit"><input type="submit" value="検索" onClick="return func('Search');"></span></li>
+				<li><span class="submit"><input type="submit" value="削除" onClick="return func('Delete');"></span></li>
 				<li><p style="color: #708090; text-align:right;">${companyLists.size()}件</p></li>
 			</ul>
+			<input type=hidden name=MySubmit> 
+			
 			<div id="error_chk">
 				<span id="errormsg_chk" class="err"></span>
 			</div>
@@ -54,11 +98,6 @@
 					</tbody>
 				</table>
 			</div>
-			<ul class = "sub">
-				<li><span class="submit"><input type="submit" value="削除" onClick="return func('Delete');"></span></li>
-				<li><span class="submit"><input type="submit" value="検索" onClick="return func('Search');"></span></li>
-			</ul>
-			<input type=hidden name=MySubmit> 
 		</form>
 	</div>
 </body>

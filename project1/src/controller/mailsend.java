@@ -67,20 +67,35 @@ public class mailsend extends HttpServlet {
 		
 		try {
 			
+			String param = request.getParameter("param");
+			
 			userMODEL usermodel = new userMODEL();		
 			usermodel.SetUserid(mailadress);
 			
 			ret = usermodel.userExist();
 			
-			if (ret > 0)
-			{
-				request.setAttribute("errorMessage","既に登録済みです。");
-				
-				//ログイン画面
-				RequestDispatcher dispatchar =
-						request.getRequestDispatcher("/jsp/registmail.jsp");
-				dispatchar.forward(request, response);
-				return;
+			if (param.equals("new")){
+				if (ret > 0)
+				{
+					request.setAttribute("errorMessage","既に登録済みです。");
+					
+					//ログイン画面
+					RequestDispatcher dispatchar =
+							request.getRequestDispatcher("/jsp/registmail.jsp");
+					dispatchar.forward(request, response);
+					return;
+				}
+			}else{
+				if (ret != 1)
+				{
+					request.setAttribute("errorMessage","登録されてません。");
+					
+					//ログイン画面
+					RequestDispatcher dispatchar =
+							request.getRequestDispatcher("/jsp/reissuemail.jsp");
+					dispatchar.forward(request, response);
+					return;
+				}
 			}
 			
 			// ■トークン作成
@@ -97,10 +112,14 @@ public class mailsend extends HttpServlet {
 			  
 			// ■メール送信＆トークン登録
 			mailsendMODEL mailsendmodel = new mailsendMODEL();		
-			ret = mailsendmodel.mailsend(mailadress, tknbuf.toString());
+			ret = mailsendmodel.mailsend(param, mailadress, tknbuf.toString());
 			
 			if (ret == 0){
-				request.setAttribute("Message","/newregist?tkn=" + tknbuf.toString());
+				if (param.equals("new")){
+					request.setAttribute("Message","/newregist?tkn=" + tknbuf.toString());
+				}else{
+					request.setAttribute("Message","/reissue?tkn=" + tknbuf.toString());
+				}
 				
 				// 送信OK
 				RequestDispatcher dispatchar =

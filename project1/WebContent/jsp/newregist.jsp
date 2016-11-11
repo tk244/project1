@@ -16,10 +16,13 @@
 			${errorMessage}
 		</p>
 		<form name="form1" action="${pageContext.request.contextPath}/newregist" method="post">
+			<div id="error_chk">
+				<span id="errormsg_chk" class="err"></span>
+			</div>
 			<table>
 				<tr>
 					<td class="col">メールアドレス<span class="str">&nbsp;(必須)</span></td>
-					<td><input type="text" readonly="readonly" name="userid" value=${mailadress}/>
+					<td><input type="text" readonly="readonly" name="userid" value=${mailadress}>
 						<% if(request.getAttribute("errorUserid") != null){ %>
 							<br><span class="err">${errorUserid}</span>
 						<% } %>
@@ -36,6 +39,17 @@
 						<% } %>
 						<div id="error_pass">
 							<span id="errormsg_pass" class="err"></span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="col">パスワード(確認用)<span class="str">&nbsp;(必須)</span></td>
+					<td><input type="password" name="passchk" >
+						<% if(request.getAttribute("errorPasschk") != null){ %>
+							<br><span class="err">${errorPasschk}</span>
+						<% } %>
+						<div id="error_passchk">
+							<span id="errormsg_passchk" class="err"></span>
 						</div>
 					</td>
 				</tr>

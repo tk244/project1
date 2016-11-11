@@ -65,9 +65,61 @@ public class userDAO {
 	        // 自動コミット・モードを設定
 	        conn.setAutoCommit(false);
 	        
-	    	String sql = "INSERT INTO jdbctestdb.user ";
+	    	String sql = "INSERT INTO user ";
 	    	sql = sql + "(userid  , username  , password  ,  created_name  , updated_name) ";
 	    	sql = sql + "VALUES ( '" + userid + "','" + username + "','" + pass + "' , 'system'  , 'system')  ";
+	    	
+	    	Statement stmt = conn.createStatement();
+	    	
+	    	ret = stmt.executeUpdate(sql);
+	    	
+	    	if (ret != 1){
+	    		// 異常
+	    		return -1;
+	    	}
+    	   	    	
+	    	// コミット
+	    	conn.commit();
+	    	 
+	    	stmt.close();
+
+	    	return 0;
+		      
+	    }catch (ClassNotFoundException e){
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
+	    }catch (SQLException e){
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
+	    }catch (Exception e){
+	    	throw new Exception(getClass().getName() + " " + e.getMessage());
+      	}finally{
+        try{
+			if (conn != null){
+				conn.rollback();
+				conn.close();
+			}
+        }catch (SQLException e){
+        	throw new Exception(getClass().getName() + " " + e.getMessage());
+        }
+      }
+	}
+	
+	public int userUpdate(String userid, String pass) throws Exception 
+	{
+		Connection conn = null;
+		int ret = 0;
+		
+	    try 
+	    {   	
+	    	Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    	conn = DriverManager.getConnection(constant.url, constant.user, constant.password);
+
+	        // 自動コミット・モードを設定
+	        conn.setAutoCommit(false);
+	        
+	    	String sql = "UPDATE user ";
+	    	sql = sql + " SET password = '" + pass + "',";
+	    	sql = sql + " updated = NOW() ";
+	    	sql = sql + " WHERE userid = '" + userid + "' AND deleted_flg = '0'";
 	    	
 	    	Statement stmt = conn.createStatement();
 	    	

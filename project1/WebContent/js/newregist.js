@@ -30,6 +30,15 @@ function mySubmit()
 		document.getElementById("error_username").style.display = "none";
 	}
 	
+	if(document.form1.pass.value != document.form1.passchk.value){
+		document.getElementById("errormsg_chk").innerHTML = "パスワードが不一致です。";
+		document.getElementById("error_chk").style.display = "block";
+		flag = 1;
+	}
+	else{
+		document.getElementById("error_chk").style.display = "none";
+	}
+	
 	// 設定終了
 	if(flag){
 		return false; // 送信を中止

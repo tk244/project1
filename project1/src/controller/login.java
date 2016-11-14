@@ -105,8 +105,11 @@ public class login extends HttpServlet {
 				session.setAttribute("login", "OK");
 				session.setAttribute("userid", userid);
 
-				RequestDispatcher dispatch = request.getRequestDispatcher("/top");
-				dispatch.forward(request, response);
+//				RequestDispatcher dispatch = request.getRequestDispatcher("/top");
+//				dispatch.forward(request, response);
+				
+				response.sendRedirect(context.getContextPath() + "/top");
+
 			}	
 
 		}catch (Exception e){

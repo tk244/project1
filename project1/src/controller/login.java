@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import constants.constant;
 
 import model.userMODEL;
+
+import dao.loginHistoryDAO;
 
 /**
  * Servlet implementation class login
@@ -101,6 +104,10 @@ public class login extends HttpServlet {
 						request.getRequestDispatcher("/jsp/login.jsp");
 				dispatchar.forward(request, response);
 			}else{
+				
+				loginHistoryDAO loginhistoryDAO = new loginHistoryDAO();
+				
+				ret = loginhistoryDAO.loginHistoryInsert(userid);
 				
 				session.setAttribute("login", "OK");
 				session.setAttribute("userid", userid);

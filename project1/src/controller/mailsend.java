@@ -138,6 +138,7 @@ public class mailsend extends HttpServlet {
 		 		  
 		}catch (Exception e){
 			logger.error(e.getMessage());
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, constant.serverError);
 		}
 		
 		logger.debug("doPost End");

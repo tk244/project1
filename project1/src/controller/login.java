@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
@@ -92,7 +91,7 @@ public class login extends HttpServlet {
 			
 			// ログインチェック
 			ret = usermodel.loginCheck();
-			
+
 			if (ret != 1)
 			{
 				session.setAttribute("login", "NG");
@@ -116,11 +115,12 @@ public class login extends HttpServlet {
 //				dispatch.forward(request, response);
 				
 				response.sendRedirect(context.getContextPath() + "/top");
-
 			}	
 
 		}catch (Exception e){
 			logger.error(e.getMessage());
+
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, constant.serverError);
 		}
 		
 		logger.debug("doPost End");

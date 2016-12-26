@@ -99,6 +99,7 @@ public class newregist extends HttpServlet {
 		
 		}catch (Exception e){
 			logger.error(e.getMessage());
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, constant.serverError);
 		}
 		
 		logger.debug("doGet End");
@@ -159,8 +160,9 @@ public class newregist extends HttpServlet {
 				dispatchar.forward(request, response);
 			}
 		}catch (Exception e){
-			logger.error(e.getMessage());		
-      	}	    
+			logger.error(e.getMessage());
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, constant.serverError);
+      	}
 	    logger.debug("doPost End");
 	}
 }

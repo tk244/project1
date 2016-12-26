@@ -56,9 +56,21 @@ public class login extends HttpServlet {
 //		aaa = prop.getProperty("hoge");
 //		aaa = prop.getProperty("foo");
 		
-		RequestDispatcher dispatchar =
-				request.getRequestDispatcher("/jsp/login.jsp");
-		dispatchar.forward(request, response);
+		ServletContext context = getServletContext();
+		
+		HttpSession session = request.getSession(false);
+		
+		// セッション判定
+		if (session == null){
+			// ログイン画面
+			RequestDispatcher dispatchar =
+					request.getRequestDispatcher("/jsp/login.jsp");
+			dispatchar.forward(request, response);
+		}else{
+			// トップ画面
+			response.sendRedirect(context.getContextPath() + "/top");
+		}
+		
 	}
 
 	/**
@@ -96,7 +108,7 @@ public class login extends HttpServlet {
 			{
 				session.setAttribute("login", "NG");
 				
-				request.setAttribute("errorMessage","ユーザIDまたはパスワードが違います");
+				request.setAttribute("errorMessage", "ユーザIDまたはパスワードが違います");
 				
 				// ログイン画面
 				RequestDispatcher dispatchar =
@@ -104,9 +116,14 @@ public class login extends HttpServlet {
 				dispatchar.forward(request, response);
 			}else{
 				
+				// ログイン履歴登録
 				loginHistoryDAO loginhistoryDAO = new loginHistoryDAO();
 				
 				ret = loginhistoryDAO.loginHistoryInsert(userid);
+				
+				if (ret != 1){
+					throw new Exception("ログイン履歴登録異常"); 
+				}
 				
 				session.setAttribute("login", "OK");
 				session.setAttribute("userid", userid);
@@ -114,6 +131,7 @@ public class login extends HttpServlet {
 //				RequestDispatcher dispatch = request.getRequestDispatcher("/top");
 //				dispatch.forward(request, response);
 				
+				// トップ画面
 				response.sendRedirect(context.getContextPath() + "/top");
 			}	
 

@@ -15,7 +15,7 @@
 		<ul class = "menu">
 		  <li><a href="${pageContext.request.contextPath}/top">TOP</a></li>
 		  <li><a href="${pageContext.request.contextPath}/companyreist">新規登録</a></li>
-		  <li><a href="#">-</a></li>
+		  <li><a href="${pageContext.request.contextPath}/loginHistory">ログイン履歴</a></li>
 		  <li><a href="#">-</a></li>
 		  <li><a href="#">-</a></li>
 		</ul>

@@ -1,0 +1,16 @@
+#form{
+  width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #555;
+}
+
+td, th {
+padding: 15px 10px;
+}
+
+table .col {
+    color: #696969;
+    vertical-align: top;
+    width: 150px;
+}
